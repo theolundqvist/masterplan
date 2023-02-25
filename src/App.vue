@@ -1,17 +1,37 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+
+//set language and time
+import { defineComponent } from "vue";
+import { ElConfigProvider } from "element-plus";
+
+import sv from "element-plus/dist/locale/sv.mjs";
+import "dayjs/locale/sv";
+
+defineComponent({
+  components: {
+    ElConfigProvider,
+  },
+  setup() {
+    return {
+      locale: sv,
+    };
+  },
+});
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <el-config-provider :locale="locale">
+    <div>
+      <a href="https://vitejs.dev" target="_blank">
+        <img src="/vite.svg" class="logo" alt="Vite logo" />
+      </a>
+      <a href="https://vuejs.org/" target="_blank">
+        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+      </a>
+    </div>
+    <HelloWorld msg="Vite + Vue" />
+  </el-config-provider>
 </template>
 
 <style scoped>
