@@ -7,11 +7,25 @@ defineProps({
 
 const count = ref(0);
 const date = ref("");
+const courses = ref([]); //useState i react
+
+fetch("https://api.lth.lu.se/lot/courses?programmeCode=C&academicYearId=22_23")
+  .then((res) => {
+    console.log(res);
+    if (!res.ok) throw new Exception("failed");
+    return res.json();
+  })
+  .then((data) => {
+    console.log(data);
+    courses.value = data.sort((a, b) => a.name_sv.localeCompare(b.name_sv)); //setState
+  });
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
+  <h1>{{ courses.length }} courses fetched</h1>
+  <li v-for="c in courses">
+    {{ c.name_sv }}
+  </li>
   <div class="card">
     <el-button type="primary">test</el-button>
     <el-date-picker
