@@ -6,6 +6,7 @@ defineProps({
 });
 
 const count = ref(0);
+const date = ref("");
 </script>
 
 <template>
@@ -13,6 +14,12 @@ const count = ref(0);
 
   <div class="card">
     <el-button type="primary">test</el-button>
+    <el-date-picker
+      v-model="date"
+      type="date"
+      placeholder="Välj en dag"
+      :size="size"
+    />
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
       Edit
