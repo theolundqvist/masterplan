@@ -1,5 +1,6 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
+import ChooseProgram from "./components/ChooseProgram.vue";
 
 //set language and time
 import { defineComponent } from "vue";
@@ -30,7 +31,8 @@ defineComponent({
         <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
       </a>
     </div>
-    <HelloWorld msg="Vite + Vue" />
+  <!-- <HelloWorld msg="Vite + Vue" /> -->
+    <ChooseProgram msg="Choose your program"/>
   </el-config-provider>
 </template>
 
