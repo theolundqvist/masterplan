@@ -1,6 +1,7 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
 import ChooseProgram from "./components/ChooseProgram.vue";
+import DisplayCoursesVue from "./components/DisplayCourses.vue";
 
 //set language and time
 import { defineComponent } from "vue";
@@ -8,6 +9,7 @@ import { ElConfigProvider } from "element-plus";
 
 import sv from "element-plus/dist/locale/sv.mjs";
 import "dayjs/locale/sv";
+import { get } from "lodash";
 
 defineComponent({
   components: {
@@ -19,6 +21,13 @@ defineComponent({
     };
   },
 });
+
+
+function getCourses(program){
+  console.log(program);
+}
+
+
 </script>
 
 <template>
@@ -31,8 +40,16 @@ defineComponent({
         <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
       </a>
     </div>
+
   <!-- <HelloWorld msg="Vite + Vue" /> -->
-    <ChooseProgram msg="Choose your program"/>
+    <a>
+      <ChooseProgram @change="getCourses" msg="Choose your program"/>
+    </a>
+    <hr>
+    <a>
+      <DisplayCoursesVue msg="DisplayProgram"></DisplayCoursesVue>
+      <!-- <HelloWorld msg="Choose your program"/>   -->
+    </a>
   </el-config-provider>
 </template>
 
