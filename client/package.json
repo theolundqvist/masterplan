@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "canvas": "^2.11.0",
     "element-plus": "^2.2.32",
+    "pdf.js-extract": "^0.2.1",
     "vue": "^3.2.47"
   },
   "devDependencies": {
@@ -17,8 +19,8 @@
     "@vue/compiler-sfc": "^3.2.47",
     "sass": "^1.58.2",
     "unplugin-auto-import": "^0.15.0",
+    "unplugin-element-plus": "^0.7.0",
     "unplugin-vue-components": "^0.24.0",
-    "vite": "^4.1.4",
-    "unplugin-element-plus": "^0.7.0"
+    "vite": "^4.1.4"
   }
 }
