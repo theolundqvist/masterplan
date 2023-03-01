@@ -28,12 +28,7 @@ fetch("https://api.lth.lu.se/lot/courses?programmeCode=C&academicYearId=22_23")
   </li>
   <div class="card">
     <el-button type="primary">test</el-button>
-    <el-date-picker
-      v-model="date"
-      type="date"
-      placeholder="Välj en dag"
-      :size="size"
-    />
+    <el-date-picker v-model="date" type="date" :size="size" />
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
       Edit

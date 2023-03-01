@@ -5,26 +5,16 @@ import ChooseProgram from "./components/ChooseProgram.vue";
 import DisplayCoursesVue from "./components/DisplayCourses.vue";
 import ChildComponent from "./components/ChildComponent.vue";
 
-//set language and time
-import { defineComponent } from "vue";
-import { ElConfigProvider } from "element-plus";
-
-import sv from "element-plus/dist/locale/sv.mjs";
+//locale
 import "dayjs/locale/sv";
-import { get } from "lodash";
+import { ElConfigProvider } from "element-plus";
+import sv from "element-plus/dist/locale/sv.mjs";
+import en from "element-plus/dist/locale/en.mjs";
+const locale = sv;
+
+//vue
 import { ref } from "vue";
-
-defineComponent({
-  components: {
-    ElConfigProvider,
-  },
-  setup() {
-    return {
-      locale: sv,
-    };
-  },
-});
-
+import { RouterView } from "vue-router";
 //state and function for getting data from ChooseProgram
 const courseArray = ref([]);
 function getCourses(program) {
@@ -39,6 +29,8 @@ function getCourses(program) {
 
 <template>
   <el-config-provider :locale="locale">
+    <!-- route outlet -->
+    <!-- component matched by the route will render here -->
     <div>
       <a href="https://vitejs.dev" target="_blank">
         <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -55,9 +47,10 @@ function getCourses(program) {
     </a>
     <hr />
     <a>
-      <DisplayCoursesVue msg="DisplayProgram"></DisplayCoursesVue>
+      <DisplayCoursesVue></DisplayCoursesVue>
       <!-- <HelloWorld msg="Choose your program"/>   -->
     </a>
+    <router-view></router-view>
   </el-config-provider>
 </template>
 

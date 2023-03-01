@@ -102,7 +102,6 @@ function fetchProgramCourses(program) {
   <el-select
     v-model="value"
     class="m-2"
-    placeholder="Select"
     size="large"
     @change="($event) => fetchProgramCourses($event)"
   >
