@@ -1,4 +1,5 @@
 <script setup>
+import Course from "./data/Course.js";
 import HelloWorld from "./components/HelloWorld.vue";
 import ChooseProgram from "./components/ChooseProgram.vue";
 import DisplayCoursesVue from "./components/DisplayCourses.vue";
@@ -25,10 +26,14 @@ defineComponent({
 });
 
 //state and function for getting data from ChooseProgram
-const programData = ref([]);
+const courseArray = ref([]);
 function getCourses(program) {
-  programData.value = program;
-  console.log(programData);
+  var count = program.length;
+  courseArray.value.length = 0;
+  console.log(count);
+  for (var i = 0; i < count; i++) {
+    courseArray.value[i] = new Course(program[i]);
+  }
 }
 </script>
 
@@ -46,7 +51,7 @@ function getCourses(program) {
     <!-- <HelloWorld msg="Vite + Vue" /> -->
     <a>
       <ChooseProgram @change="getCourses" />
-      <ChildComponent v-bind:courses="programData" />
+      <ChildComponent v-bind:courses="courseArray" />
     </a>
     <hr />
     <a>
