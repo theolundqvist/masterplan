@@ -22,7 +22,7 @@ function getCourses(program) {
   courseArray.value.length = 0;
   console.log(count);
   for (var i = 0; i < count; i++) {
-    courseArray.value[i] = new Course(program[i]);
+    courseArray.value[i] = new Course(program[i]); //update render many times??
   }
 }
 </script>

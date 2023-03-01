@@ -111,12 +111,23 @@ function getExam(data) {
     return percentage;
   };
   const matrix = {
+    optional_exam: probability(
+      5,
+      search([
+        ["frivillig tentamen", 5],
+        ["frivillig skriftlig tentamen", 5],
+      ])
+    ),
     written: probability(
       5,
       search([
         ["skriftlig", 1],
-        ["skriftlig tentamen", 3],
-        ["skriftliga tentamen", 3],
+        ["skriftligt", -1],
+        ["skriftlig tentamen", 5],
+        ["skriftligt prov", 5],
+        ["skriftliga tentamen", 5],
+        ["skriftlig rapport", -1],
+        ["skriftlig caserapport", -1],
       ])
     ),
     oral: probability(
@@ -125,24 +136,80 @@ function getExam(data) {
         "munta",
         "muntlig",
         ["muntlig presentation", -1],
+        ["muntlig tentamen", 4],
         ["muntligt föredrag", -1],
+        ["muntlig redovisning", -1],
       ])
     ),
     presentation: probability(
       5,
       search([
         "presentation",
+        ["representation", -1],
         ["muntlig presentation", 3],
+        ["muntlig redovisning", 3],
         ["muntligt föredrag", 3],
       ])
     ),
-    labs: probability(5, search(["laborationer", "datorlaborationer"])),
-    project: probability(5, search(["projekt", "grupparbete"])),
+    labs: probability(
+      5,
+      search([
+        ["laborationer", 5],
+        ["obligatoriska laborationer", 3],
+        ["datorlaborationer", 3],
+      ])
+    ),
+
+    lab_reports: probability(5, search([
+      ["laborationsrapport", 2],
+      ["labbrapport", 2]
+    ])),
+    project: probability(
+      5,
+      search([
+        ["projekt", 5],
+        ["grupparbete", 1],
+      ])
+    ),
     assigments: probability(
       5,
-      search([["inlämningsuppgifter", 3], "inlämningsuppift"])
+      search([
+        ["inlämningsuppgifter", 4],
+        ["övningsuppgifter", 1],
+        ["hemuppgift", 1],
+        "inlämningsuppift",
+        "övningar",
+      ])
     ),
-    report: probability(5, search(["rapport", ["skriftlig rapport", 3]])),
+    seminar: probability(
+      5,
+      search([
+        ["seminarier", 2],
+        ["seminarium", 2],
+      ])
+    ),
+    internship: probability(
+      5,
+      search([
+        ["handledd praktik", 3],
+        ["praktik", 1],
+        ["praktiken", -2],
+      ])
+    ),
+    report: probability(
+      5,
+      search([
+        "rapport",
+        ["laborationsrapport", -1.5],
+        ["labbrapport", -1.5],
+        ["skriftlig rapport", 3],
+        ["skriftlig projektrapport", 2],
+        ["uppsatsdelen", 2],
+        ["skriftlig uppgift", 1],
+        ["skriftliga uppgift", 1],
+        "uppsats",
+      ])
+    ),
   };
 
   const res = {};
@@ -150,7 +217,7 @@ function getExam(data) {
     console.log(x);
     let verdict = "maybe";
     if (x[1] > 0.7) verdict = "yes";
-    if (x[1] < 0.3) verdict = "no";
+    if (x[1] < 0.4) verdict = "no";
     res[x[0]] = { verdict, probability: x[1] };
   });
   return res;

@@ -83,7 +83,7 @@ function fetchProgramCourses(program) {
   fetch(
     "https://api.lth.lu.se/lot/courses?programmeCode=" +
       program +
-      "&academicYearId=22_23"
+      "&academicYearId=20_21"
   )
     .then((res) => {
       // console.log(res);
@@ -92,7 +92,9 @@ function fetchProgramCourses(program) {
     })
     .then((data) => {
       // console.log(data);
-      courses.value = data.sort((a, b) => a.name_sv.localeCompare(b.name_sv)); //setState
+      courses.value = data.sort((a, b) =>
+        a.year.toString().localeCompare(b.year.toString())
+      ); //setState
       emit("change", courses.value);
     });
 }
