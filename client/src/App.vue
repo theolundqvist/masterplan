@@ -1,31 +1,23 @@
 <script setup>
+//components
 import HelloWorld from "./components/HelloWorld.vue";
 import ChooseProgram from "./components/ChooseProgram.vue";
 import DisplayCoursesVue from "./components/DisplayCourses.vue";
-import { RouterView } from "vue-router";
 import ChildComponent from "./components/ChildComponent.vue";
 
-//set language and time
-import { defineComponent } from "vue";
-import { ElConfigProvider } from "element-plus";
-
-import sv from "element-plus/dist/locale/sv.mjs";
+//locale
 import "dayjs/locale/sv";
+import { ElConfigProvider } from "element-plus";
+import sv from "element-plus/dist/locale/sv.mjs";
+import en from "element-plus/dist/locale/en.mjs";
+const locale = sv;
+
+//vue
 import { ref } from "vue";
-
-defineComponent({
-  components: {
-    ElConfigProvider,
-  },
-  data() {
-    return {
-      locale: sv,
-    };
-  },
-});
-
+import { RouterView } from "vue-router";
 //state and function for getting data from ChooseProgram
 const programData = ref([]);
+
 function getCourses(program) {
   programData.value = program;
   console.log(programData);
@@ -52,7 +44,7 @@ function getCourses(program) {
     </a>
     <hr />
     <a>
-      <DisplayCoursesVue msg="DisplayProgram"></DisplayCoursesVue>
+      <DisplayCoursesVue></DisplayCoursesVue>
       <!-- <HelloWorld msg="Choose your program"/>   -->
     </a>
     <router-view></router-view>
