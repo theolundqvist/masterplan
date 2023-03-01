@@ -1,16 +1,15 @@
-<script setup >
+<script setup>
 import { ref } from "vue";
 
-const props = defineProps({
-})
+const props = defineProps({});
 
-const emit = defineEmits(['change', 'delete'])
+const emit = defineEmits(["change", "delete"]);
 
 const courses = ref([]); //useState i react
 
 const value = ref("");
-const programC = 'C';
-const programD = 'D';
+const programC = "C";
+const programD = "D";
 
 const options = [
   {
@@ -79,27 +78,34 @@ const options = [
   },
 ];
 
-function fetchProgramCourses(program){
-   console.log(program);
-    fetch("https://api.lth.lu.se/lot/courses?programmeCode=" + program + "&academicYearId=22_23")
-  .then((res) => {
-    // console.log(res);
-    if (!res.ok) throw new Exception("failed");
-    return res.json();
-  })
-  .then((data) => {
-    // console.log(data);
-    courses.value = data.sort((a, b) => a.name_sv.localeCompare(b.name_sv)); //setState
-    emit('change', courses.value);
-  });
+function fetchProgramCourses(program) {
+  console.log(program);
+  fetch(
+    "https://api.lth.lu.se/lot/courses?programmeCode=" +
+      program +
+      "&academicYearId=22_23"
+  )
+    .then((res) => {
+      // console.log(res);
+      if (!res.ok) throw new Exception("failed");
+      return res.json();
+    })
+    .then((data) => {
+      // console.log(data);
+      courses.value = data.sort((a, b) => a.name_sv.localeCompare(b.name_sv)); //setState
+      emit("change", courses.value);
+    });
 }
-
-
 </script>
 
-<template>    
-  <el-select v-model="value" class="m-2" placeholder="Select" size="large" @change="$event => fetchProgramCourses($event)">
-    
+<template>
+  <el-select
+    v-model="value"
+    class="m-2"
+    placeholder="Select"
+    size="large"
+    @change="($event) => fetchProgramCourses($event)"
+  >
     <el-option
       v-for="item in options"
       :key="item.value"
