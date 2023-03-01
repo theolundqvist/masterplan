@@ -2,6 +2,7 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import ChooseProgram from "./components/ChooseProgram.vue";
 import DisplayCoursesVue from "./components/DisplayCourses.vue";
+import ChildComponent from "./components/ChildComponent.vue";
 
 //set language and time
 import { defineComponent } from "vue";
@@ -10,6 +11,7 @@ import { ElConfigProvider } from "element-plus";
 import sv from "element-plus/dist/locale/sv.mjs";
 import "dayjs/locale/sv";
 import { get } from "lodash";
+import { ref } from "vue";
 
 defineComponent({
   components: {
@@ -22,8 +24,11 @@ defineComponent({
   },
 });
 
+//state and function for getting data from ChooseProgram
+const programData = ref([]);
 function getCourses(program) {
-  console.log(program);
+  programData.value = program;
+  console.log(programData);
 }
 </script>
 
@@ -40,7 +45,8 @@ function getCourses(program) {
 
     <!-- <HelloWorld msg="Vite + Vue" /> -->
     <a>
-      <ChooseProgram @change="getCourses" msg="Choose your program" />
+      <ChooseProgram @change="getCourses" />
+      <ChildComponent v-bind:courses="programData" />
     </a>
     <hr />
     <a>
