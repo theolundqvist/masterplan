@@ -1,8 +1,12 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 // const age = ref("");
 const props = defineProps({
   courses: Array,
+});
+watch(props, (cs, prevCS) => {
+  console.log(cs.courses.value);
+  console.log(prevCS.courses.value);
 });
 </script>
 
