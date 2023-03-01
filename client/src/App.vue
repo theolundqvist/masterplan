@@ -29,8 +29,6 @@ function getCourses(program) {
 
 <template>
   <el-config-provider :locale="locale">
-    <!-- route outlet -->
-    <!-- component matched by the route will render here -->
     <div>
       <a href="https://vitejs.dev" target="_blank">
         <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -50,6 +48,9 @@ function getCourses(program) {
       <DisplayCoursesVue></DisplayCoursesVue>
       <!-- <HelloWorld msg="Choose your program"/>   -->
     </a>
+    <!-- route outlet -->
+    <!-- component matched by the route will render here -->
+    <h2>här renderas routes!</h2>
     <router-view></router-view>
   </el-config-provider>
 </template>
