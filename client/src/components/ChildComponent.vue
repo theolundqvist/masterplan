@@ -1,13 +1,13 @@
 <script setup>
 import { ref, watch, defineProps } from "vue";
 // const age = ref("");
-const props = defineProps(["courses"]);
+const props = defineProps(["courses"]); //defineProps måste vara en array av strängar annars kan man inte "watcha" den!!!!
 
 //download and print info about examnination
 watch(props.courses, (a) => {
   console.log(a);
   let i = 0;
-  let slice = 4;
+  let slice = 2;
   a.forEach((course) => {
     i++;
     if (i > (slice - 1) * 10 && i < slice * 10) {
@@ -30,7 +30,7 @@ watch(props.courses, (a) => {
 
             "\n\n" +
               Object.entries(obj.exam)
-                .filter((x) => x[1].verdict !== "no")
+                //.filter((x) => x[1].verdict !== "no")
                 .map(
                   (x) => `${x[0]}:    ${x[1].verdict}   (${x[1].probability})`
                 )
