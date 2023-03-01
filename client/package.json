@@ -12,8 +12,8 @@
   "dependencies": {
     "canvas": "^2.11.0",
     "element-plus": "^2.2.32",
-    "pdf.js-extract": "^0.2.1",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
