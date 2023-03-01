@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 
-const props = defineProps({});
+const props = defineProps([]);
 
 const emit = defineEmits(["change", "delete"]);
 

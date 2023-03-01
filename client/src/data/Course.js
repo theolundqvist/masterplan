@@ -18,6 +18,10 @@ export default class Course {
 
 
 }
+//lägg in de som vi vill använda som klassattribut och kommentera vad de innehåller kanske
+//alternativt lägg in "isAdvanced" mycket mer nice än course.cycle????!?, 
+//isåfall kan vi behålla alla kassa namn på saker och bara lägg in massa metoder för det vi vill kolla
+//bestäm du
 
 // courseId
 // courseCode

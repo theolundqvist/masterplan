@@ -133,8 +133,9 @@ function getExam(data) {
     oral: probability(
       5,
       search([
-        "munta",
+        ["munta", 3],
         "muntlig",
+        ["muntliga", -1],
         ["muntlig presentation", -1],
         ["muntlig tentamen", 4],
         ["muntligt föredrag", -1],
@@ -199,7 +200,7 @@ function getExam(data) {
     report: probability(
       5,
       search([
-        "rapport",
+        ["rapport", 2],
         ["laborationsrapport", -1.5],
         ["labbrapport", -1.5],
         ["skriftlig rapport", 3],
@@ -207,7 +208,7 @@ function getExam(data) {
         ["uppsatsdelen", 2],
         ["skriftlig uppgift", 1],
         ["skriftliga uppgift", 1],
-        "uppsats",
+        ["uppsats", 2],
       ])
     ),
   };

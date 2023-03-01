@@ -30,7 +30,7 @@ watch(props.courses, (a) => {
 
             "\n\n" +
               Object.entries(obj.exam)
-                //.filter((x) => x[1].verdict !== "no")
+                .filter((x) => x[1].verdict !== "no")
                 .map(
                   (x) => `${x[0]}:    ${x[1].verdict}   (${x[1].probability})`
                 )
