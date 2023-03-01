@@ -2,7 +2,6 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import ChooseProgram from "./components/ChooseProgram.vue";
 import DisplayCoursesVue from "./components/DisplayCourses.vue";
-import ReadPdfTest from "./components/ReadPdfTest.vue";
 
 //set language and time
 import { defineComponent } from "vue";
@@ -30,7 +29,6 @@ function getCourses(program) {
 
 <template>
   <el-config-provider :locale="locale">
-    <ReadPdfTest />
     <div>
       <a href="https://vitejs.dev" target="_blank">
         <img src="/vite.svg" class="logo" alt="Vite logo" />
