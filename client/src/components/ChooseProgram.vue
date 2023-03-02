@@ -1,6 +1,8 @@
 <script setup>
 import { ref, inject } from "vue";
+import Course from "../data/Course.js";
 const { courses, setCourses } = inject("courses");
+const { user } = inject("user");
 //const props = defineProps([]);
 //
 //const emit = defineEmits(["change", "delete"]);
@@ -78,6 +80,14 @@ const options = [
   },
 ];
 
+function getCourses(program) {
+  const temp = [];
+  for (var i = 0; i < program.length; i++) {
+    temp.push(new Course(program[i])); //update render many times??
+  }
+  return temp;
+}
+
 function fetchProgramCourses(program) {
   console.log(program);
   fetch(
@@ -92,8 +102,13 @@ function fetchProgramCourses(program) {
     })
     .then((data) => {
       // console.log(data);
-      setCourses((old) =>
-        data.sort((a, b) => a.year.toString().localeCompare(b.year.toString()))
+      user.program = program;
+      setCourses(
+        getCourses(
+          data.sort((a, b) =>
+            a.year.toString().localeCompare(b.year.toString())
+          )
+        )
       ); //setState
       //emit("change", courses.value);
     });

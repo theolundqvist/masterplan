@@ -12,6 +12,7 @@ export default class User {
     this.program = "";
     this.year = "";
     this.courses = {}; //{"code": {liked:false, merits:4}}
+    this.loadedFromLocalStorage = false;
   }
 
   getCourseData(code) {
@@ -29,6 +30,7 @@ export default class User {
   }
 
   saveToLocalStorage() {
+    //check to not write over localStorage
     window.localStorage.setItem("user", JSON.stringify(this));
   }
 }
