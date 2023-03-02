@@ -7,6 +7,7 @@ const { courses, setCourses } = inject("courses");
 //download and print info about examnination
 watch(courses, (a) => {
   console.log(a);
+  return;
   let i = 0;
   let slice = 2;
   a.forEach((course) => {
@@ -50,6 +51,9 @@ watch(courses, (a) => {
   <h1>{{ courses.length }} courses fetched</h1>
   <li v-for="c in courses">
     {{ c.name_sv }}
+    <span v-for="i in [1, 2, 3, 4]">
+      <span v-if="c.isInStudyPeriod(i)">; {{ i }}</span>
+    </span>
   </li>
 </template>
 
