@@ -124,6 +124,7 @@ function getExam(data) {
         ["skriftlig", 1],
         ["skriftligt", -1],
         ["skriftlig tentamen", 5],
+        ["skriftlig examination", 5],
         ["skriftligt prov", 5],
         ["skriftliga tentamen", 5],
         ["skriftlig rapport", -1],
@@ -140,6 +141,7 @@ function getExam(data) {
         ["muntlig tentamen", 4],
         ["muntligt föredrag", -1],
         ["muntlig redovisning", -1],
+        ["muntlig examination", 5],
       ])
     ),
     presentation: probability(

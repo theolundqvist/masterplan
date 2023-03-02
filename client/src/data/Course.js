@@ -1,25 +1,32 @@
 export default class Course {
-    constructor(obj) {
-        var details = {};
-        for (const property in obj) {
-            details[property] = obj[property];
-            // console.log("property = " + property + " value = " + details[property]);
-        }
-        return details;
+  constructor(obj) {
+    for (const key in obj) {
+      // details[key] = obj[key];
+      this[key] = obj[key];
+      // console.log("property = " + property + " value = " + details[property]);
+    }
+  }
+
+  isInStudyPeriod(nbr) {
+    //Maximum of four times a year, code (e.g. 108) is modulo 4 +1
+    for (let i = 1; i < length; i++) {
+      var start = (this[`timePlans__${i}__startSpNr`] % 4) + 1;
+      var end = (this[`timePlans__${i}__endSpNr`] % 4) + 1;
+      if (start <= nbr && nbr <= end) return true;
     }
 
-  isInStudyPeriod(nbr){
     return false;
     // timePlans__1__startSpNr <- ex 109
     // timePlans__1__endSpNr <- ex 110
     // på något sätt betyder det vilken lp det är, se excel
     // timePlans__2 är om det går två gånger på ett år så då är det nästa gång den går.
   }
-
-
+  isAdvanced() {
+    return this.cycle === "A";
+  }
 }
 //lägg in de som vi vill använda som klassattribut och kommentera vad de innehåller kanske
-//alternativt lägg in "isAdvanced" mycket mer nice än course.cycle????!?, 
+//alternativt lägg in "isAdvanced" mycket mer nice än course.cycle????!?,
 //isåfall kan vi behålla alla kassa namn på saker och bara lägg in massa metoder för det vi vill kolla
 //bestäm du
 
