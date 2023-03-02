@@ -1,11 +1,10 @@
 export default class Course {
     constructor(obj) {
-        var details = {};
-        for (const property in obj) {
-            details[property] = obj[property];
+        for (const key in obj) {
+            // details[key] = obj[key];
+            this[key] = obj[key]
             // console.log("property = " + property + " value = " + details[property]);
         }
-        return details;
     }
 
   isInStudyPeriod(nbr){
