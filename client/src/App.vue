@@ -13,9 +13,11 @@ import en from "element-plus/dist/locale/en.mjs";
 const locale = sv;
 //vue
 import { RouterView } from "vue-router";
+import Animation from "./components/Animation.vue";
 </script>
 
 <template>
+  <Animation />
   <el-config-provider :locale="locale">
     <DataProvider>
       <div>
