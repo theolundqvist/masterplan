@@ -6,16 +6,17 @@ import ChooseProgram from "./components/ChooseProgram.vue";
 import DisplayCoursesVue from "./components/DisplayCourses.vue";
 import ChildComponent from "./components/ChildComponent.vue";
 
+//vue
+import { ref, provide, reactive, readonly } from "vue";
+import { RouterView } from "vue-router";
+
 //locale
 import "dayjs/locale/sv";
 import { ElConfigProvider } from "element-plus";
 import sv from "element-plus/dist/locale/sv.mjs";
 import en from "element-plus/dist/locale/en.mjs";
-const locale = sv;
 
-//vue
-import { ref, provide, reactive, readonly } from "vue";
-import { RouterView } from "vue-router";
+const locale = sv;
 //state and function for getting data from ChooseProgram
 const courseArray = ref([]);
 function getCourses(program) {
