@@ -1,5 +1,6 @@
 <script setup>
 import Course from "./data/Course.js";
+//nedan kan tas bort för kommer från router sen
 import HelloWorld from "./components/HelloWorld.vue";
 import ChooseProgram from "./components/ChooseProgram.vue";
 import DisplayCoursesVue from "./components/DisplayCourses.vue";
@@ -13,7 +14,7 @@ import en from "element-plus/dist/locale/en.mjs";
 const locale = sv;
 
 //vue
-import { ref } from "vue";
+import { ref, provide, reactive } from "vue";
 import { RouterView } from "vue-router";
 //state and function for getting data from ChooseProgram
 const courseArray = ref([]);
@@ -25,6 +26,29 @@ function getCourses(program) {
     courseArray.value[i] = new Course(program[i]); //update render many times??
   }
 }
+
+//att skicka props
+//2 alternativ
+//a. prop drilling
+//b. provide/inject (https://vuejs.org/guide/components/provide-inject.html)
+provide("courses", courseArray);
+//eller: provide("courses", readonly(courseArray))
+//så nu använder man bara "const courses = inject("courses")" i en subcomponent
+//den kommer automatiskt att vara "reactiv" dvs en "ref" och uppdatera i subcomponent när den uppdateras här
+//om vi också vill uppdatera vår ref från en subcomponent så kan vi göra följande
+
+const user = ref({ program: "", year: "", completed_courses: [] }); //hmmmm  reactive bättre än ref när det är object i
+
+function addCompletedCourse(c) {
+  user.completed_courses.push(c);
+}
+
+provide("user", {
+  user,
+  addCompletedCourse,
+});
+//sen
+//const {user, addCompletedCourse} = inject("user") //i subcomponent
 </script>
 
 <template>
