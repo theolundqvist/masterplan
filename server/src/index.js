@@ -163,10 +163,13 @@ function getExam(data) {
       ])
     ),
 
-    lab_reports: probability(5, search([
-      ["laborationsrapport", 2],
-      ["labbrapport", 2]
-    ])),
+    lab_reports: probability(
+      5,
+      search([
+        ["laborationsrapport", 2],
+        ["labbrapport", 2],
+      ])
+    ),
     project: probability(
       5,
       search([
@@ -187,8 +190,8 @@ function getExam(data) {
     seminar: probability(
       5,
       search([
-        ["seminarier", 2],
-        ["seminarium", 2],
+        ["seminarier", 4],
+        ["seminarium", 4],
       ])
     ),
     internship: probability(
