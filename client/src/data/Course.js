@@ -21,6 +21,7 @@ export default class Course {
     // på något sätt betyder det vilken lp det är, se excel
     // timePlans__2 är om det går två gånger på ett år så då är det nästa gång den går.
   }
+
   isAdvanced() {
     return this.cycle === "A";
   }

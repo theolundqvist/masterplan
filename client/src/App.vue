@@ -4,6 +4,9 @@ import HelloWorld from "./components/HelloWorld.vue";
 import ChooseProgram from "./components/ChooseProgram.vue";
 import DisplayCoursesVue from "./components/DisplayCourses.vue";
 import ChildComponent from "./components/ChildComponent.vue";
+//vue
+import { RouterView } from "vue-router";
+import Animation from "./components/Animation.vue";
 //locale
 import "dayjs/locale/sv";
 import { ElConfigProvider } from "element-plus";
@@ -11,9 +14,6 @@ import sv from "element-plus/dist/locale/sv.mjs";
 import en from "element-plus/dist/locale/en.mjs";
 
 const locale = sv;
-//vue
-import { RouterView } from "vue-router";
-import Animation from "./components/Animation.vue";
 </script>
 
 <template>

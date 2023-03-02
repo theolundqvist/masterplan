@@ -6,7 +6,7 @@ function say(message) {
 <template>
   <h1 class="shiny">Create your Master Plan</h1>
 
-  <el-row class="mb-4">
+  <el-row>
     <el-button class="stor" type="primary" round @click="say('Hello')"
       >Click me</el-button
     >
