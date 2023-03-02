@@ -9,6 +9,7 @@ import "dayjs/locale/sv";
 import { ElConfigProvider } from "element-plus";
 import sv from "element-plus/dist/locale/sv.mjs";
 import en from "element-plus/dist/locale/en.mjs";
+
 const locale = sv;
 //vue
 import { RouterView } from "vue-router";
