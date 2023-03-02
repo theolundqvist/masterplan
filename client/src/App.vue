@@ -14,7 +14,7 @@ import en from "element-plus/dist/locale/en.mjs";
 const locale = sv;
 
 //vue
-import { ref, provide, reactive } from "vue";
+import { ref, provide, reactive, readonly } from "vue";
 import { RouterView } from "vue-router";
 //state and function for getting data from ChooseProgram
 const courseArray = ref([]);
@@ -32,7 +32,7 @@ function getCourses(program) {
 //a. prop drilling
 //b. provide/inject (https://vuejs.org/guide/components/provide-inject.html)
 provide("courses", courseArray);
-//eller: provide("courses", readonly(courseArray))
+//eller: provide("courses", readonly(courseArray)) //hmm verkar inte funka
 //så nu använder man bara "const courses = inject("courses")" i en subcomponent
 //den kommer automatiskt att vara "reactiv" dvs en "ref" och uppdatera i subcomponent när den uppdateras här
 //om vi också vill uppdatera vår ref från en subcomponent så kan vi göra följande
