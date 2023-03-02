@@ -15,8 +15,7 @@
       .particle(class="particle" + i + j)
 </template>
 
-<style lang="stylus">
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+<style scoped lang="stylus">
 
 /**
 * get random number.
@@ -37,18 +36,10 @@ _mult_num_text = 360 / _number_of_text;
 _mult_num_particle = 360 / _number_of_particle;
 _width = 40;
 _height = 40;
+//add colors that reflect every guild
+//colors = ( #E0137E #8431BF #2388C4 #E0137E #8431BF #2388C4 #E0137E #8431BF #2388C4 #2388C4)
+colors = ( hsl(0 * _mult_num_text, 80%, 60%) hsl(1 * _mult_num_text, 80%, 60%) hsl(2 * _mult_num_text, 80%, 60%) hsl(3 * _mult_num_text, 80%, 60%) hsl(4 * _mult_num_text, 80%, 60%) hsl(5 * _mult_num_text, 80%, 60%) hsl(6 * _mult_num_text, 80%, 60%) hsl(7 * _mult_num_text, 80%, 60%) hsl(8 * _mult_num_text, 80%, 60%) hsl(9 * _mult_num_text, 80%, 60%))
 
-html, body
-  height: 100vh;
-  width: 100vw;
-
-body
-  font-family: 'Montserrat', sans-serif;
-  background: #FFF;
-  position: relative;
-  overflow: hidden;
-  font-size: 100%;
-  text-align: center;
 
 .criterion
   font-size: 1.6rem;
@@ -73,7 +64,7 @@ for i in (0.._number_of_text)
   .background{i}
     left: 12.5% * i;
     height: 100vh;
-    background-color: hsl(i * _mult_num_text, 80%, 60%);
+    background-color: colors[i]
 
 @keyframes background-animation
   0%
@@ -129,7 +120,7 @@ for i in (0.._number_of_text)
   @keyframes text-after-animation{i}
     0%
       width: 0px;
-      background-color: hsl(i * _mult_num_text, 80%, 60%);
+      background-color: colors[i]
       opacity: 1;
     50%
       width: _width px;
@@ -166,7 +157,7 @@ for i in (0.._number_of_text)
     left: -(_number_of_text / 2 - i) * _width + (_width / 2) px;
     top: 0;
     animation: frame-animation + i 1s ease-in-out (i * 200)ms 1 normal forwards;
-    background-color: hsl(i * _mult_num_text, 80%, 60%);
+    background-color: colors[i];
 
 for i in (0.._number_of_text)
    @keyframes frame-animation{i}
@@ -194,7 +185,7 @@ for i in (0.._number_of_text)
     .particle{i}{j}
       left: -(_number_of_text / 2 - i) * _width + (_width / 2) px;
       opacity: 0;
-      background-color: hsl(i * _mult_num_text, 80%, 60%);
+      background-color: colors[i];
       animation: particle-animation + i + j 1s ease-in-out 1s + (i * 200)ms 1 normal forwards;
 
 for i in (0.._number_of_text)

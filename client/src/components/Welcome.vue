@@ -15,6 +15,7 @@ function say(message) {
 
 <style scoped>
 .shiny {
+  text-shadow: #42b883ff 0px 0px 10px;
 }
 .stor {
   transform: scale(2);
@@ -25,9 +26,6 @@ function say(message) {
 }
 .stor:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
-  filter: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px,
-    rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px,
-    rgba(240, 46, 170, 0.05) 25px 25px;
 }
 /* .el-button{ 
     padding: 1em;

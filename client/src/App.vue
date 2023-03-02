@@ -47,7 +47,24 @@ import Animation from "./components/Animation.vue";
   </el-config-provider>
 </template>
 
-<style scoped>
+<!-- //change font -->
+<style lang="stylus">
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+html, body
+  height: 100vh;
+  width: 100vw;
+
+body
+  font-family: 'Montserrat', sans-serif;
+  background: #FFF;
+  position: relative;
+  overflow-x: hidden;
+  font-size: 100%;
+  text-align: center;
+</style>
+
+<style>
 .logo {
   height: 6em;
   padding: 1.5em;
