@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from "vue";
-
-const props = defineProps([]);
-
-const emit = defineEmits(["change", "delete"]);
-
-const courses = ref([]); //useState i react
+import { ref, inject } from "vue";
+const { courses, setCourses } = inject("courses");
+//const props = defineProps([]);
+//
+//const emit = defineEmits(["change", "delete"]);
+//
+//const courses = ref([]); //useState i react
 
 const value = ref("");
 const programC = "C";
@@ -92,10 +92,10 @@ function fetchProgramCourses(program) {
     })
     .then((data) => {
       // console.log(data);
-      courses.value = data.sort((a, b) =>
-        a.year.toString().localeCompare(b.year.toString())
+      setCourses((old) =>
+        data.sort((a, b) => a.year.toString().localeCompare(b.year.toString()))
       ); //setState
-      emit("change", courses.value);
+      //emit("change", courses.value);
     });
 }
 </script>

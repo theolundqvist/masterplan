@@ -1,10 +1,11 @@
 <script setup>
-import { ref, watch, defineProps } from "vue";
+import { ref, watch, defineProps, inject } from "vue";
 // const age = ref("");
-const props = defineProps(["courses"]); //defineProps måste vara en array av strängar annars kan man inte "watcha" den!!!!
+//const props = defineProps(["courses"]); //defineProps måste vara en array av strängar annars kan man inte "watcha" den!!!!
+const { courses, setCourses } = inject("courses");
 
 //download and print info about examnination
-watch(props.courses, (a) => {
+watch(courses, (a) => {
   console.log(a);
   let i = 0;
   let slice = 2;
