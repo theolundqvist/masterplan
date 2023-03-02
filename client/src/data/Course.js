@@ -9,9 +9,9 @@ export default class Course {
 
   isInStudyPeriod(nbr) {
     //Maximum of four times a year, code (e.g. 108) is modulo 4 +1
-    for (let i = 1; i < length; i++) {
-      var start = (this[`timePlans__${i}__startSpNr`] % 4) + 1;
-      var end = (this[`timePlans__${i}__endSpNr`] % 4) + 1;
+    for (let i = 0; i <= 0; i++) {
+      var start = (this.timePlans[i].startSpNr % 4) + 1;
+      var end = (this.timePlans[i].endSpNr % 4) + 1;
       if (start <= nbr && nbr <= end) return true;
     }
 
