@@ -22,8 +22,25 @@ export default class Course {
     // timePlans__2 är om det går två gånger på ett år så då är det nästa gång den går.
   }
 
+  getStudyPeriods() {
+    return [1, 2, 3, 4].filter((x) => this.isInStudyPeriod(x));
+  }
+
   isAdvanced() {
     return this.cycle === "A";
+  }
+
+  compare(other) {
+    const year = this.year
+      .toString()
+      .localeCompare(other.year.toString(), { numeric: true });
+    if (year) return year;
+
+    const s1 = this.getStudyPeriods();
+    const s2 = other.getStudyPeriods();
+    const diff = s1[0] - s2[0];
+    if (diff) return diff;
+    return this.name_sv.localeCompare(other.name_sv);
   }
 }
 //lägg in de som vi vill använda som klassattribut och kommentera vad de innehåller kanske

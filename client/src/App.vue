@@ -17,31 +17,8 @@ const locale = sv;
 </script>
 
 <template>
-  <Animation />
   <el-config-provider :locale="locale">
     <DataProvider>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://vuejs.org/" target="_blank">
-          <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-        </a>
-      </div>
-
-      <!-- <HelloWorld msg="Vite + Vue" /> -->
-      <a>
-        <ChooseProgram />
-        <ChildComponent />
-      </a>
-      <hr />
-      <a>
-        <DisplayCoursesVue></DisplayCoursesVue>
-        <!-- <HelloWorld msg="Choose your program"/>   -->
-      </a>
-      <!-- route outlet -->
-      <!-- component matched by the route will render here -->
-      <h2>här renderas routes!</h2>
       <router-view></router-view>
     </DataProvider>
   </el-config-provider>

@@ -7,7 +7,6 @@ const { courses, setCourses } = inject("courses");
 //download and print info about examnination
 watch(courses, (a) => {
   console.log(a);
-  return;
   let i = 0;
   let slice = 2;
   a.forEach((course) => {
