@@ -7,6 +7,7 @@ import { fetchYears } from "../util/fetch.js";
 
 function chooseYear(e) {
   user.year = e;
+  console.log(e);
   //byt flik
   router.push({ path: "/overview" });
 }
@@ -28,20 +29,15 @@ onMounted(() => {
 <template>
   <div class="center">
     <h1 class="shiny">Välj Läsår</h1>
-
   </div>
-  <!-- <el-select class="m-2" size="large" @change="chooseProgram"> -->
-
-  <el-scrollbar height="1000px" >
-<div @click="chooseYear">
+  <el-scrollbar height='95%'>
     <p v-for="item in years" :key="item.value" :value="item.value" 
-    class="scrollbar-demo-item">
-     <h2>{{ item.label }}</h2>
+    class="scrollbar-demo-item" @click="chooseYear(item.value)">
+    <!-- <div @click="chooseYear(item.value)"> -->
+      <h2>{{ item.label }}</h2>
+    <!-- </div> -->
     </p>
-  
-</div>  
-    </el-scrollbar>
-  
+  </el-scrollbar>
 </template>
 
 <style scoped>
@@ -49,6 +45,7 @@ onMounted(() => {
   text-shadow: #42b883ff 0px 0px 10px;
   margin-top: 3em;
 }
+
 .scrollbar-demo-item {
   display: flex;
   align-items: center;
