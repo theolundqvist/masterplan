@@ -1,6 +1,6 @@
 <script></script>
 <template lang="pug">
-- var texts = ["M", "a","s","t","e","r","p","l","a", "n"];
+- var texts = ["M", "a","s","t","e","r","P","l","a", "n"];
 - var number_of_particle = 12;
 
 - for (var i = 0; i < texts.length; i++)

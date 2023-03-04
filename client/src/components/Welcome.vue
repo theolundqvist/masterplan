@@ -9,9 +9,9 @@ function say(message) {
 <template>
   <Animation />
   <div class="center">
-    <h1 class="shiny">Create your own</h1>
+    <h1 class="shiny">Skapa din egen</h1>
     <el-button class="stor" type="primary" round @click="say('Hello')"
-      >Click me</el-button
+      >Starta</el-button
     >
   </div>
 </template>
