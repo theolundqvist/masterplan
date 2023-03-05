@@ -39,6 +39,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
+
 .shiny {
     text-shadow: #42b883ff 0px 0px 10px;
     margin-top: 3em;

@@ -20,20 +20,20 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    v-for="c in courses.filter((x) => x.choice != 'elective')"
-    :key="c.courseCode"
-  >
+  <el-header class="header"> Program:
+    <el-tag class="" type="success">{{ user.program }}</el-tag>
+  Läsår: 
+  <el-tag class="" type="success">{{ user.year }}</el-tag>
+
+  </el-header>
+  <div v-for="c in courses.filter((x) => x.choice != 'elective')" :key="c.courseCode">
     <h3>
       {{ c.name_sv }}
     </h3>
     <span>lp: {{ c.getStudyPeriods() }}</span>
   </div>
   <h1>Valbara kurser</h1>
-  <div
-    v-for="c in courses.filter((x) => x.choice === 'elective')"
-    :key="c.courseCode"
-  >
+  <div v-for="c in courses.filter((x) => x.choice === 'elective')" :key="c.courseCode">
     <h3>
       {{ c.name_sv }}
     </h3>
@@ -41,4 +41,8 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.header{
+  margin-top:4em;
+}
+</style>

@@ -16,6 +16,7 @@ const { user } = inject("user");
 
 const years = ref([]);
 
+
 onMounted(() => {
   if (!user.program) return router.replace({ path: "/choose-program" });
   fetchYears(user.program)
@@ -27,7 +28,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="center">
+    <el-header class="header"> Program: 
+  <el-tag class="" type="success">{{ user.program }}</el-tag>
+    </el-header>
+<div class="center">
     <h1 class="shiny">Välj Läsår</h1>
   </div>
   <el-scrollbar height='95%'>
@@ -41,9 +45,12 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.header{
+  margin-top:4em;
+}
 .shiny {
   text-shadow: #42b883ff 0px 0px 10px;
-  margin-top: 3em;
+  /* margin-top: 2em; */
 }
 
 .scrollbar-demo-item {
