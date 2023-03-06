@@ -21,6 +21,7 @@ onMounted(() => {
   if (!user.program) return router.replace({ path: "/choose-program" });
   fetchYears(user.program)
     .then((data) => (years.value = data))
+    .then((data) =>console.log(data))
     .catch((e) => {
       console.log(e);
     });
