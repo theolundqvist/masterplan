@@ -1,6 +1,6 @@
 <script setup>
 import { ref, inject, onMounted } from "vue";
-import { router } from "../routes.js";
+import { router, backToStartPage } from "../routes.js";
 import { Back, House } from "@element-plus/icons-vue";
 
 import { fetchYears } from "../util/fetch.js";
@@ -30,7 +30,7 @@ onMounted(() => {
 
 <template>
 
-<el-button type="primary" :icon="Back" @click="backToPreviousPage()">Tillbaka</el-button>
+<el-button type="primary" :icon="Back" @click="router.back()">Tillbaka</el-button>
 <el-button type="primary" :icon="House" @click="backToStartPage()">Startsida</el-button> 
 
     <el-header class="header"> Program: 

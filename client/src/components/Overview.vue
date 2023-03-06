@@ -41,7 +41,7 @@ onMounted(() => {
 			</el-col>
 			<el-col :span="6">
 				<h2>Kurskod</h2>
-			</el-col>
+cd 			</el-col>
 		</el-row>
 		<el-divider class="border-header" />
 

@@ -18,4 +18,8 @@ const router = createRouter({
     { path: "/overview", component: Overview },
   ], // short for `routes: routes`
 });
-export { router };
+
+function backToStartPage(){
+  router.push({ path: "/" })
+}
+export { router, backToStartPage};
