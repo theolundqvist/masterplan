@@ -16,7 +16,7 @@ function cont(variable) {
     <h1 class="shiny">Skapa din egen</h1>
     <div class="buttons">
       <el-button class="stor" type="primary" round @click="cont('fromNew')"
-        >Från början</el-button
+        >Starta</el-button
       >
       <el-button class="stor" type="primary" round @click="cont('fromStorage')"
         >Fortsätt</el-button
