@@ -8,15 +8,24 @@ class CourseData {
 }
 
 export default class User {
-  constructor() {
+  emptyState() {
     this.program = "";
     this.year = "";
     this.courses = {}; //{"code": {liked:false, merits:4}}
     this.loadedFromLocalStorage = false;
   }
 
+  constructor() {
+    this.emptyState();
+  }
+
   getCourseData(code) {
     return this.courses[code] || new CourseData();
+  }
+
+  clearData() {
+    window.localStorage.clear("user");
+    this.emptyState();
   }
 
   loadFromLocalStorage() {
@@ -26,6 +35,7 @@ export default class User {
       this.program = parsed.program;
       this.year = parsed.year;
       this.courses = parsed.courses;
+      this.loadedFromLocalStorage = true;
     }
   }
 
