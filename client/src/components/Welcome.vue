@@ -1,22 +1,36 @@
 <script setup>
 import { router } from "../routes.js";
-function say(message) {
-  //alert(message);
-
-  router.push({ path: "/choose-program" });
+function cont(variable) {
+  switch (variable) {
+    case "fromNew":
+      window.localStorage.clear();
+      router.push({ path: "/choose-program" });
+    case "fromStorage":
+      router.push({ path: "/overview" });
+  }
 }
 </script>
 <template>
   <Animation />
   <div class="center">
     <h1 class="shiny">Skapa din egen</h1>
-    <el-button class="stor" type="primary" round @click="say('Hello')"
-      >Starta</el-button
-    >
+    <div class="buttons">
+      <el-button class="stor" type="primary" round @click="cont('fromNew')"
+        >Från början</el-button
+      >
+      <el-button class="stor" type="primary" round @click="cont('fromStorage')"
+        >Fortsätt</el-button
+      >
+    </div>
   </div>
 </template>
 
 <style scoped>
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 100pt;
+}
 .center {
   height: 100vh;
   display: flex;
