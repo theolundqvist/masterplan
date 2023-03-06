@@ -1,9 +1,11 @@
 <script setup>
 import { router } from "../routes.js";
+import { inject } from "vue";
+const { user } = inject("user");
 function cont(variable) {
   switch (variable) {
     case "fromNew":
-      window.localStorage.clear();
+      user.clearData();
       router.push({ path: "/choose-program" });
     case "fromStorage":
       router.push({ path: "/overview" });
