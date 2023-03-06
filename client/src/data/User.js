@@ -21,7 +21,7 @@ export default class User {
 
   loadFromLocalStorage() {
     const store = window.localStorage.getItem("user");
-    if (store && Object.keys(courses) === 0) {
+    if (store && Object.keys(this.courses).length === 0) {
       const parsed = JSON.parse(store);
       this.program = parsed.program;
       this.year = parsed.year;

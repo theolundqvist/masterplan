@@ -28,10 +28,10 @@ onMounted(() => {
         <h1 class="shiny">Välj Program</h1>
     </div>
     <el-scrollbar height='95%'>
-        <p v-for="item in programs" :key="item.value" :value="item.value" 
-        class="scrollbar-demo-item" @click="chooseProgram(item.value)">
-        <!-- <div @click="chooseProgram(item.value)"> -->
-            <h2>{{ item.label }}</h2>
+        <p v-for="item in programs" :key="item.value" :value="item.value" class="scrollbar-demo-item"
+            @click="chooseProgram(item.value)">
+            <!-- <div @click="chooseProgram(item.value)"> -->
+        <h2>{{ item.label }}</h2>
         <!-- </div> -->
         </p>
 
@@ -39,7 +39,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
 .shiny {
     text-shadow: #42b883ff 0px 0px 10px;
     margin-top: 3em;

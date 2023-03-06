@@ -26,6 +26,10 @@ export default class Course {
     return [1, 2, 3, 4].filter((x) => this.isInStudyPeriod(x));
   }
 
+  isMandatory() {
+    return this.choice === "mandatory";
+  }
+  
   isAdvanced() {
     return this.cycle === "A";
   }
