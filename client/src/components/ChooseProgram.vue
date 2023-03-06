@@ -1,7 +1,7 @@
 <script setup>
 import { ref, inject, onMounted } from "vue";
 import { router } from "../routes.js";
-import { Menu as IconMenu, Message, Setting } from "@element-plus/icons-vue";
+import { Back, House } from "@element-plus/icons-vue";
 
 import { fetchPrograms } from "../util/fetch.js";
 
@@ -21,9 +21,20 @@ onMounted(() => {
         .then((data) => (programs.value = data))
         .catch((e) => console.log(e));
 });
+function backToPreviousPage() {
+    router.back();
+}
+function backToStartPage(){
+    router.push({ path: "/#" })
+}
+
 </script>
 
 <template>
+    <el-button type="primary" :icon="Back" @click="backToPreviousPage()">Tillbaka</el-button>
+    <el-button type="primary" :icon="House" @click="backToStartPage()">Startsida</el-button> 
+    
+
     <div class="center">
         <h1 class="shiny">Välj Program</h1>
     </div>
@@ -44,6 +55,10 @@ onMounted(() => {
     margin-top: 3em;
 }
 
+.back {
+    position: left;
+}
+
 .scrollbar-demo-item {
     display: flex;
     align-items: center;
@@ -54,5 +69,4 @@ onMounted(() => {
     border-radius: 4px;
     background: var(--el-color-primary-light-9);
     color: var(--el-color-primary);
-}
-</style>
+}</style>
