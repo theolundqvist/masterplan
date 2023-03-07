@@ -54,9 +54,4 @@ function cont(variable) {
 .stor:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
-/* .el-button{
-    padding: 1em;
-    height: 10em;
-    width: 20em;
-}*/
 </style>
