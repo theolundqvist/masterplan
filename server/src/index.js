@@ -111,14 +111,14 @@ function getExam(data) {
     return percentage;
   };
   const matrix = {
-    optional_exam: probability(
+    frivillig_tentamen: probability(
       5,
       search([
         ["frivillig tentamen", 5],
         ["frivillig skriftlig tentamen", 5],
       ])
     ),
-    written: probability(
+    skriftlig: probability(
       5,
       search([
         ["skriftlig", 1],
@@ -131,7 +131,7 @@ function getExam(data) {
         ["skriftlig caserapport", -1],
       ])
     ),
-    oral: probability(
+    munta: probability(
       5,
       search([
         ["munta", 3],
@@ -154,7 +154,7 @@ function getExam(data) {
         ["muntligt föredrag", 3],
       ])
     ),
-    labs: probability(
+    labb: probability(
       5,
       search([
         ["laborationer", 5],
@@ -163,21 +163,21 @@ function getExam(data) {
       ])
     ),
 
-    lab_reports: probability(
+    labb_rapport: probability(
       5,
       search([
         ["laborationsrapport", 2],
         ["labbrapport", 2],
       ])
     ),
-    project: probability(
+    projekt: probability(
       5,
       search([
         ["projekt", 5],
         ["grupparbete", 1],
       ])
     ),
-    assigments: probability(
+    inlämning: probability(
       5,
       search([
         ["inlämningsuppgifter", 4],
@@ -187,14 +187,14 @@ function getExam(data) {
         "övningar",
       ])
     ),
-    seminar: probability(
+    seminarie: probability(
       5,
       search([
         ["seminarier", 4],
         ["seminarium", 4],
       ])
     ),
-    internship: probability(
+    praktik: probability(
       5,
       search([
         ["handledd praktik", 3],
@@ -202,7 +202,7 @@ function getExam(data) {
         ["praktiken", -2],
       ])
     ),
-    report: probability(
+    rapport: probability(
       5,
       search([
         ["rapport", 2],
@@ -226,6 +226,12 @@ function getExam(data) {
     if (x[1] < 0.4) verdict = "no";
     res[x[0]] = { verdict, probability: x[1] };
   });
+  const highestProb = Object.values(res)
+    .map((x) => x.probability)
+    .reduce((a, b) => a + b, 0);
+  Object.keys(res).forEach(
+    (k) => (res[k].probability = (res[k].probability / highestProb).toFixed(2))
+  );
   return res;
   // const types = [];
   // if (search("skriftlig")) types.push("written");

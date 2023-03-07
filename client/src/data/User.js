@@ -33,16 +33,22 @@ export default class User {
     //state.courses
     const relevantCourses = Object.entries(this.courses)
       .map((x) => ({ grade: x[1]?.grade, id: x[0], credits: x[1]?.credits }))
-      .filter((x) => ["3", "4", "5"].includes(x?.grade));
+      .filter((x) => ["3", "4", "5"].includes(x?.grade))
+      .map((x) => ({
+        grade: Number(x.grade),
+        id: x.id,
+        credits: Number(x.credits),
+      }));
     // .reduce((a, b) => a + b, 0);
 
     const totalGrade = relevantCourses
       .map((x) => x.grade * x.credits)
-      .reduce((a, b) => Number(a) + Number(b), 0);
+      .reduce((a, b) => a + b, 0);
 
     const totalCredits = relevantCourses
       .map((x) => x.credits)
-      .reduce((a, b) => Number(a) + Number(b), 0);
+      .reduce((a, b) => a + b, 0);
+
     return (totalGrade / totalCredits).toFixed(4);
   }
 
