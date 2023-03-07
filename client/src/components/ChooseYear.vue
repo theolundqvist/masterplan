@@ -54,6 +54,9 @@ onMounted(() => {
 .header{
   margin-top:4em;
 }
+.center {
+    cursor: default;
+}
 .shiny {
   text-shadow: #42b883ff 0px 0px 10px;
   /* margin-top: 2em; */
@@ -73,5 +76,6 @@ onMounted(() => {
   border-radius: 4px;
   background: var(--el-color-primary-light-9);
   color: var(--el-color-primary);
+  cursor: pointer;
 }
 </style>

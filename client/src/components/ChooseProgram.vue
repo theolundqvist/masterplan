@@ -51,7 +51,9 @@ onMounted(() => {
     text-shadow: #42b883ff 0px 0px 10px;
     margin-top: 3em;
 }
-
+.center {
+    cursor: default;
+}
 .back {
     position: left;
 }
@@ -70,4 +72,5 @@ onMounted(() => {
     border-radius: 4px;
     background: var(--el-color-primary-light-9);
     color: var(--el-color-primary);
+    cursor: pointer;
 }</style>
