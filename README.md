@@ -1,7 +1,32 @@
-# Vue 3 + Vite
+# Masterplan
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Masterplan is a tool that helps with planning your master at LTH or Campus Helsingborg. Essentially it utilised the content available via LU's API:s but adds some features such as calculating average grade. 
 
-## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## WIP :construction:
+The project is currently under development and many features that we want to see in the finished product has not yet implemented.
+
+
+## Planned Features
+- [x] average grade
+- [x] information regarding examination form and assignments by heuristic search in course plan documents.
+- [ ] different methods of choosing a master program
+  - [ ] tinder like swipe 
+  - [ ] process of elimination
+  
+  
+## Installation
+### Client
+```
+cd client
+npm install
+npm start
+```
+
+### Server
+Needed for examination form information because of CORS.
+```
+cd server
+npm install
+npm start
+```
