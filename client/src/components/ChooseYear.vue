@@ -30,9 +30,10 @@ onMounted(() => {
 
 <template>
 
+<div class="button-div">
 <el-button type="primary" :icon="Back" @click="router.back()">Tillbaka</el-button>
 <el-button type="primary" :icon="House" @click="backToStartPage()">Startsida</el-button> 
-
+</div>
     <el-header class="header"> Program: 
   <el-tag class="" type="success">{{ user.program }}</el-tag>
     </el-header>
@@ -56,6 +57,10 @@ onMounted(() => {
 .shiny {
   text-shadow: #42b883ff 0px 0px 10px;
   /* margin-top: 2em; */
+}
+.button-div{
+	display: flex;
+
 }
 
 .scrollbar-demo-item {

@@ -26,9 +26,11 @@ onMounted(() => {
 </script>
 
 <template>
+
+	<div class="button-div">
     <el-button type="primary" :icon="Back" @click="router.back()">Tillbaka</el-button>
     <el-button type="primary" :icon="House" @click="backToStartPage()">Startsida</el-button> 
-    
+    </div>
 
     <div class="center">
         <h1 class="shiny">Välj Program</h1>
@@ -52,6 +54,10 @@ onMounted(() => {
 
 .back {
     position: left;
+}
+.button-div{
+	display: flex;
+
 }
 
 .scrollbar-demo-item {
