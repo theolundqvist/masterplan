@@ -38,9 +38,7 @@ onMounted(() => {
     <el-scrollbar height='95%'>
         <p v-for="item in programs" :key="item.value" :value="item.value" class="scrollbar-demo-item"
             @click="chooseProgram(item.value)">
-            <!-- <div @click="chooseProgram(item.value)"> -->
         <h2>{{ item.label }}</h2>
-        <!-- </div> -->
         </p>
 
     </el-scrollbar>
