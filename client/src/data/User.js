@@ -5,7 +5,6 @@ class CourseData {
     this.grade = undefined;
     this.scratched = false;
     this.credits = course.credits;
-    console.log(this.credits);
   }
 }
 
@@ -53,7 +52,6 @@ export default class User {
       this.courses[code] = new CourseData(course);
     }
     this.courses[code].grade = grade;
-    console.log(this.courses);
   }
 
   clearData() {
