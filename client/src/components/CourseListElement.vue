@@ -11,6 +11,8 @@ const { courses } = inject("courses");
 
 const loadedTenta = ref(false);
 
+const tentaReplacement = ref(false);
+
 const UG = c.gradingScale === "UG";
 
 function onElementVisible(visible) {
@@ -18,14 +20,21 @@ function onElementVisible(visible) {
     loadedTenta.value = true;
     if (!user.year || !user.program) return;
     if (!c.courseCode) return;
-    fetchTenta(c.courseCode, user.year).then((data) => {
-      console.log("Fetched tenta info from server");
-      course.tenta = data;
-      // let correspondingCorse = courses.value.find(
-      //   (x) => x.courseCode === c.courseCode
-      // );
-      // correspondingCorse.tenta = data;
-    });
+    fetchTenta(c.courseCode, user.year)
+      .then((data) => {
+        console.log("Fetched tenta info from server");
+        course.tenta = data;
+        // let correspondingCorse = courses.value.find(
+        //   (x) => x.courseCode === c.courseCode
+        // );
+        // correspondingCorse.tenta = data;
+      })
+      .catch((e) => {
+        if (e.message === "Failed to fetch") {
+          tentaReplacement.value = true;
+          loadedTenta.value = false;
+        }
+      });
   }
 }
 </script>
@@ -84,9 +93,8 @@ function onElementVisible(visible) {
     >
     <el-col :span="4"
       ><span>
-        <h3>
+        <h3 v-if="c.tenta">
           {{
-            c.tenta &&
             Object.entries(c.tenta?.exam)
               .filter((x) => x[1].verdict === "yes")
               .sort((a, b) => b[1].probability - a[1].probability)
@@ -94,12 +102,13 @@ function onElementVisible(visible) {
               .join(", ")
           }}
         </h3>
+
+        <h3 v-else-if="tentaReplacement">Servern svarar inte</h3>
         <!-- här vill vi lägga in från servern om kursen har tenta eller inte-->
       </span>
     </el-col>
   </el-row>
 </template>
-
 <style scoped>
 .header {
   margin-top: 4em;
