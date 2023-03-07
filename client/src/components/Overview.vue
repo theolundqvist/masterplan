@@ -31,6 +31,8 @@ onMounted(() => {
 		<el-tag class="" type="success">{{ user.program }}</el-tag>
 		Läsår:
 		<el-tag class="" type="success">{{ user.year }}</el-tag>
+		Betygssnitt:
+		<el-tag class="" type="success">{{ user.year }}</el-tag>
 	</el-header>
 
 	<h1>Obligatoriska kurser ÅK 1-3</h1>
@@ -118,7 +120,23 @@ onMounted(() => {
 		<div class="table-design" v-for="c in courses.filter((x) => x.choice === 'elective')" :key="c.courseCode">
 			<el-row>
 				<el-col :span="6">
-					<h3>Betyg här</h3>
+					<div class="table-buttons">
+					<!-- tomma fråm början, går att klicka i en åt gången, spara värdet de klickar i,
+							 uppdatera värdet för varje kurs när man klickar på nytt betyg -->
+					<!--<el-button size="small" circle v-for="i in ['U',3,4,5]" @click="type='success', plain" >{{ i }}</el-button> -->
+					<!-- <el-button :type="c.isInStudyPeriod(1) ? 'success' : ''" size="small" circle>1</el-button>  -->
+					<el-radio-group :model-value="user.courses[c.courseCode]?.grade" @change="$e => user.setGrade(c, $e)" size="small">
+						<el-radio-button label='U' />
+						<el-radio-button label='3' />
+						<el-radio-button label='4' />
+						<el-radio-button label='5' />
+					</el-radio-group>
+
+					<!--KAn man lägga in en metod i @click där man avklickar de andra?-->
+					<!-- <el-checkbox-button size="small" circle type="success" plain>U</el-checkbox-button>-->
+					
+
+				</div>
 				</el-col>
 
 				<el-col :span="6">
@@ -126,7 +144,7 @@ onMounted(() => {
 				</el-col>
 				<el-col :span="6"><span>
 						<div class="table-buttons">
-							<el-button size="small" circle v-for="i in [1, 2, 3, 4]"
+							<el-button size="small" circle disabled v-for="i in [1, 2, 3, 4]"
 							:type="c.isInStudyPeriod(i) ? 'success' : ''">{{ i }}</el-button>
 							<!-- <el-button :type="c.isInStudyPeriod(1) ? 'success' : ''" size="small" circle>1</el-button>  -->
 						</div>
