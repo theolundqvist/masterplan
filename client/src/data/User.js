@@ -1,9 +1,11 @@
 class CourseData {
-  constructor() {
+  constructor(course) {
     this.liked = false;
     this.completed = false;
     this.grade = undefined;
     this.scratched = false;
+    this.credits = course.credits;
+    console.log(this.credits);
   }
 }
 
@@ -22,19 +24,36 @@ export default class User {
   getCourseData(code) {
     return this.courses[code] || new CourseData();
   }
-  setGrade(course, grade){
-    console.log(course.courseCode, grade)
-    let code;
-    if(typeof course === "string"){
-      code = course;
-    }
-    else code = course.courseCode;
 
-    if(!this.courses[code]){
-      this.courses[code] = new CourseData()
+  getGrade(course) {
+    const code = course.courseCode;
+    return this.courses[code]?.grade;
+  }
+
+  getMeanGrade() {
+    //state.courses
+    const relevantCourses = Object.entries(this.courses)
+      .map((x) => ({ grade: x[1]?.grade, id: x[0], credits: x[1]?.credits }))
+      .filter((x) => ["3", "4", "5"].includes(x?.grade));
+    // .reduce((a, b) => a + b, 0);
+
+    const totalGrade = relevantCourses
+      .map((x) => x.grade * x.credits)
+      .reduce((a, b) => Number(a) + Number(b), 0);
+
+    const totalCredits = relevantCourses
+      .map((x) => x.credits)
+      .reduce((a, b) => Number(a) + Number(b), 0);
+    return (totalGrade / totalCredits).toFixed(4);
+  }
+
+  setGrade(course, grade) {
+    const code = course.courseCode;
+    if (!this.courses[code]) {
+      this.courses[code] = new CourseData(course);
     }
     this.courses[code].grade = grade;
-    console.log(this.courses)
+    console.log(this.courses);
   }
 
   clearData() {
