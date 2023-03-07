@@ -48,4 +48,13 @@ function fetchCourses(program, year) {
   });
 }
 
-export { safeFetch, fetchPrograms, fetchYears, fetchCourses };
+function fetchTenta(program, year) {
+  if (!program || !year) return Promise.reject(new Error("invalid arguments"));
+  return safeFetch(
+    `http://localhost/tenta?course=${program}&year=${year}`
+  ).then((data) => {
+    return data;
+  });
+}
+
+export { safeFetch, fetchPrograms, fetchYears, fetchCourses, fetchTenta };

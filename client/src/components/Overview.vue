@@ -4,7 +4,7 @@ import { router, backToStartPage } from "../routes.js";
 import { Back, House } from "@element-plus/icons-vue";
 
 import userData from "./UserData.vue";
-import { fetchCourses } from "../util/fetch.js";
+import { fetchCourses, fetchTenta } from "../util/fetch.js";
 
 const { user } = inject("user");
 const { courses, setCourses } = inject("courses");
@@ -17,6 +17,20 @@ onMounted(() => {
     return router.replace({ path: "/choose-year" });
   fetchCourses(user.program, user.year)
     .then(setCourses)
+    .then(() => {
+      let i = 0;
+      courses.value.forEach((c) => {
+        if (i < 10) {
+          i++;
+          fetchTenta(c.courseCode, user.year).then((data) => {
+            let correspondingCorse = courses.value.find(
+              (x) => x.courseCode === c.courseCode
+            );
+            correspondingCorse.tenta = data;
+          });
+        }
+      });
+    })
     .catch((e) => console.log(e));
 });
 </script>
@@ -58,9 +72,6 @@ onMounted(() => {
   </el-row>
   <el-divider class="border-header" />
 
-  <!-- <el-scrollbar class="scrollbar-demo-item"> -->
-
-  <h2>Total points: {{ user.getMeanGrade(courses) }}</h2>
   <div
     class="table-design"
     v-for="c in courses.filter((x) => x.isMandatory())"
@@ -141,7 +152,7 @@ onMounted(() => {
     <!-- <el-scrollbar class="scrollbar-demo-item"> -->
     <div
       class="table-design"
-      v-for="c in courses.filter((x) => x.choice === 'elective')"
+      v-for="c in courses.filter((x) => !x.isMandatory())"
       :key="c.courseCode"
     >
       <el-row>
@@ -176,6 +187,7 @@ onMounted(() => {
               <el-button
                 size="small"
                 circle
+                disabled
                 v-for="i in [1, 2, 3, 4]"
                 :type="c.isInStudyPeriod(i) ? 'success' : ''"
                 >{{ i }}</el-button
