@@ -56,13 +56,24 @@ onMounted(() => {
 		<el-row>
 			<el-col :span="6">
 				<h3>Betyg här</h3>
+				<div class="table-buttons">
+					<!-- tomma fråm början, går att klicka i en åt gången, spara värdet de klickar i,
+						 uppdatera värdet för varje kurs när man klickar på nytt betyg -->
+					<el-button size="small" circle v-for="i in ['U',3,4,5]" @click="type='success', plain" >{{ i }}</el-button>
+					<!-- <el-button :type="c.isInStudyPeriod(1) ? 'success' : ''" size="small" circle>1</el-button>  -->
+					<el-button type="success" plain>Success</el-button>
+				</div>
 			</el-col>
 
 			<el-col :span="6">
 				<h3>{{ c.name_sv }}</h3>
 			</el-col>
 			<el-col :span="6"><span>
-					<h3>{{ c.getStudyPeriods() }}</h3>
+					<!-- <h3>{{ c.getStudyPeriods() }}</h3> -->
+					<div class="table-buttons">
+					<el-button size="small" circle v-for="i in [1,2,3,4]" :type="c.isInStudyPeriod(i) && 'success'">{{ i }}</el-button>
+					<!-- <el-button :type="c.isInStudyPeriod(1) ? 'success' : ''" size="small" circle>1</el-button>  -->
+				</div>
 				</span></el-col>
 			<el-col :span="6"><span>
 					<h3> {{ c.courseCode }}</h3>
@@ -102,7 +113,11 @@ onMounted(() => {
 					<h3>{{ c.name_sv }}</h3>
 				</el-col>
 				<el-col :span="6"><span>
-						<h3>{{ c.getStudyPeriods() }}</h3>
+					<div class="table-buttons">
+					<el-button size="small" circle v-for="i in [1,2,3,4]" :type="c.isInStudyPeriod(i) && 'success'">{{ i }}</el-button>
+					<!-- <el-button :type="c.isInStudyPeriod(1) ? 'success' : ''" size="small" circle>1</el-button>  -->
+				</div>
+						
 					</span></el-col>
 				<el-col :span="6"><span>
 						<h3> {{ c.courseCode }}</h3>
@@ -134,24 +149,18 @@ onMounted(() => {
 	display: flex;
 
 }
-.back-button {
-	place-content: left;
-	place-self: left;
-	position: left;
-	align-self: left;
-	align-content: left;
-	object-position: left;
+.table-buttons{
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+
+
 
 }
-
-.home-button {
-	place-content: right;
-
-}
-
 .table-design {
 	background: var(--el-color-primary-light-9);
 	color: var(--el-color-primary);
+
 }
 
 .scrollbar-demo-item {
