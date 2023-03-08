@@ -51,7 +51,7 @@ function fetchCourses(program, year) {
 function fetchTenta(program, year) {
   if (!program || !year) return Promise.reject(new Error("invalid arguments"));
   return safeFetch(
-    `http://localhost/tenta?course=${program}&year=${year}`
+    `http://localhost:1234/tenta?course=${program}&year=${year}`
   ).then((data) => {
     return data;
   });

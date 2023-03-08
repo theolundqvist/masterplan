@@ -13,7 +13,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 1234;
 
 function getPlan(course, year) {
   return fetch(`https://kurser.lth.se/kursplaner/${year}/${course}.html`).then(
