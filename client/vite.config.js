@@ -6,9 +6,9 @@ import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import ElementPlus from "unplugin-element-plus/vite";
 // https://vitejs.dev/config/
-export default defineConfig(() => ({
+export default defineConfig({
   define: {
-    __SERVER_URL__: process.env.SERVER_URL,
+    __APP_ENV__: {SERVER_URL: process.env.SERVER_URL}, //process.env.SERVER_URL,
   },
   resolve: {
     alias: {
@@ -35,4 +35,4 @@ export default defineConfig(() => ({
       resolvers: [ElementPlusResolver()],
     }),
   ],
-}));
+});
