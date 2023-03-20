@@ -282,7 +282,6 @@ app.get("/tenta", (req, res) => {
 
 
 const PORT = process.env.PORT || 1234;
-if(process.env.VERCEL){}
-else app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 module.exports = app; //for vercel hosting
