@@ -13,7 +13,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-const PORT = process.env.PORT || 1234;
 
 function getPlan(course, year) {
   return fetch(`https://kurser.lth.se/kursplaner/${year}/${course}.html`).then(
@@ -281,6 +280,9 @@ app.get("/tenta", (req, res) => {
   });
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+const PORT = process.env.PORT || 1234;
+if(process.env.VERCEL){}
+else app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 module.exports = app; //for vercel hosting
