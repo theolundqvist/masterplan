@@ -48,10 +48,11 @@ function fetchCourses(program, year) {
   });
 }
 
+const port = import.meta.env.SERVER_PORT || 1234;
 function fetchTenta(program, year) {
   if (!program || !year) return Promise.reject(new Error("invalid arguments"));
   return safeFetch(
-    `http://localhost:1234/tenta?course=${program}&year=${year}`
+    `http://localhost:${port}/tenta?course=${program}&year=${year}`
   ).then((data) => {
     return data;
   });
