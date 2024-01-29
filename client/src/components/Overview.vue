@@ -47,7 +47,12 @@ onMounted(async () => {
 
 <style scoped>
 .header {
-  margin-top: 4em;
+  position:fixed;
+  width:100%;
+  height:auto;
+  top:0px;
+  background:white;
+  z-index: 10;
 }
 
 .border-header {
@@ -63,6 +68,7 @@ onMounted(async () => {
   cursor: default;
 }
 .button-div {
+  margin-top: 40px;
   display: flex;
 }
 
